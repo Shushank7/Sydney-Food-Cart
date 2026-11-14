@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sydneyfoodcart.com</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <i class="fas fa-shopping-cart" style="font-size: 2rem; color: #1a4d2e;"></i>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active" onclick="switchTab('home')">HOME</a></li>
+                <li><a href="#" onclick="switchTab('menu')">MENU</a></li>
+                <li><a href="#" onclick="switchTab('book')">BOOK TABLE</a></li>
+            </ul>
+        </nav>
+        <div class="cart-icon" onclick="toggleCart()">
+            <i class="fas fa-shopping-bag"></i>
+            <span id="cart-count">0</span>
+        </div>
+    </header>
+
+    <main id="home-view" class="view-section active">
+        <div class="collage-container">
+            <div class="collage-item item1"><img src="assets/market.jpg" alt="Market"></div>
+            <div class="collage-item item2"><img src="assets/pasta.jpg" alt="Pasta"></div>
+            <div class="collage-item item3"><img src="assets/opera.jpg" alt="Sydney Opera House"></div>
+            <div class="collage-item item4"><img src="assets/veggies.jpg" alt="Vegetables"></div>
+            <div class="collage-item item5"><img src="assets/seafood.jpg" alt="Seafood"></div>
+            <div class="collage-item item6"><img src="assets/bread.jpg" alt="Bread"></div>
+            
+            <div class="welcome-overlay">
+                <h1>Welcome to<br>Sydneyfoodcart.com</h1>
+            </div>
+        </div>
+    </main>
+
+    <main id="menu-view" class="view-section">
+        <div class="menu-nav">
+            <button class="menu-tab active" onclick="filterMenu('all')">ALL</button>
+            <button class="menu-tab" onclick="filterMenu('breakfast')">BREAKFAST</button>
+            <button class="menu-tab" onclick="filterMenu('lunch')">LUNCH</button>
+            <button class="menu-tab" onclick="filterMenu('dinner')">DINNER</button>
+            <button class="menu-tab" onclick="filterMenu('drinks')">DRINKS</button>
+            <button class="menu-tab" onclick="filterMenu('fastfood')">FAST FOOD</button>
+        </div>
+
+        <div class="menu-grid" id="menu-grid">
+            <!-- Item 1 -->
+            <div class="menu-card" data-category="lunch dinner">
+                <img src="assets/burger.jpg" alt="Classic Angus Burger">
+                <div class="card-content">
+                    <h3>Classic Angus Burger</h3>
+                    <p>Premium beef patty with lettuce, tomato, special sauce. Served with fries.</p>
+                    <div class="card-footer">
+                        <span class="price">$24.90</span>
+                        <button class="btn-add" onclick="addToCart('Classic Angus Burger', 24.90)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="menu-card" data-category="lunch dinner">
+                <img src="assets/burger.jpg" alt="Double Cheese Burger">
+                <div class="card-content">
+                    <h3>Double Cheese Burger</h3>
+                    <p>Two premium beef patties with double cheese and special sauce.</p>
+                    <div class="card-footer">
+                        <span class="price">$28.90</span>
+                        <button class="btn-add" onclick="addToCart('Double Cheese Burger', 28.90)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="menu-card" data-category="lunch dinner breakfast">
+                <img src="assets/salad.jpg" alt="Garden Salad">
+                <div class="card-content">
+                    <h3>Garden Salad</h3>
+                    <p>Fresh lettuce, cherry tomatoes, cucumbers with vinaigrette.</p>
+                    <div class="card-footer">
+                        <span class="price">$14.50</span>
+                        <button class="btn-add" onclick="addToCart('Garden Salad', 14.50)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Item 4 -->
+            <div class="menu-card" data-category="lunch dinner">
+                <img src="assets/salad.jpg" alt="Caesar Salad">
+                <div class="card-content">
+                    <h3>Caesar Salad</h3>
+                    <p>Crisp romaine lettuce, parmesan cheese, croutons, and Caesar dressing.</p>
+                    <div class="card-footer">
+                        <span class="price">$16.50</span>
+                        <button class="btn-add" onclick="addToCart('Caesar Salad', 16.50)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Item 5 -->
+            <div class="menu-card" data-category="lunch drinks breakfast brunch dinner">
+                <img src="assets/lemonade.jpg" alt="Fresh Lemonade">
+                <div class="card-content">
+                    <h3>Fresh Lemonade</h3>
+                    <p>Freshly squeezed lemons with a hint of mint.</p>
+                    <div class="card-footer">
+                        <span class="price">$6.00</span>
+                        <button class="btn-add" onclick="addToCart('Fresh Lemonade', 6.00)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+             <!-- Item 6 -->
+             <div class="menu-card" data-category="lunch dinner">
+                <img src="assets/burger.jpg" alt="Beer Angus Burger">
+                <div class="card-content">
+                    <h3>Beer Angus Burger</h3>
+                    <p>Premium beef patty paired with a craft beer reduction.</p>
+                    <div class="card-footer">
+                        <span class="price">$28.90</span>
+                        <button class="btn-add" onclick="addToCart('Beer Angus Burger', 28.90)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+             <!-- Item 7 -->
+             <div class="menu-card" data-category="lunch dinner">
+                <img src="assets/pasta.jpg" alt="Creamy Mushroom Pasta">
+                <div class="card-content">
+                    <h3>Creamy Mushroom Pasta</h3>
+                    <p>Fettuccine pasta in a rich, creamy mushroom sauce.</p>
+                    <div class="card-footer">
+                        <span class="price">$18.50</span>
+                        <button class="btn-add" onclick="addToCart('Creamy Mushroom Pasta', 18.50)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+             <!-- Item 8 -->
+             <div class="menu-card" data-category="lunch dinner">
+                <img src="assets/pasta.jpg" alt="Seafood Pasta">
+                <div class="card-content">
+                    <h3>Seafood Pasta</h3>
+                    <p>Fresh pasta with assorted seafood in a light garlic sauce.</p>
+                    <div class="card-footer">
+                        <span class="price">$24.50</span>
+                        <button class="btn-add" onclick="addToCart('Seafood Pasta', 24.50)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+             <!-- Item 9 -->
+             <div class="menu-card" data-category="lunch dinner brunch">
+                <img src="assets/burger.jpg" alt="Veggie Burger">
+                <div class="card-content">
+                    <h3>Veggie Burger</h3>
+                    <p>Plant-based patty with fresh greens and vegan mayo.</p>
+                    <div class="card-footer">
+                        <span class="price">$18.90</span>
+                        <button class="btn-add" onclick="addToCart('Veggie Burger', 18.90)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+             <!-- Item 10 -->
+             <div class="menu-card" data-category="lunch dinner brunch">
+                <img src="assets/salad.jpg" alt="Greek Salad">
+                <div class="card-content">
+                    <h3>Greek Salad</h3>
+                    <p>Tomatoes, cucumbers, olives, and feta cheese.</p>
+                    <div class="card-footer">
+                        <span class="price">$15.50</span>
+                        <button class="btn-add" onclick="addToCart('Greek Salad', 15.50)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+             <!-- Item 11 -->
+             <div class="menu-card" data-category="lunch drinks">
+                <img src="assets/lemonade.jpg" alt="Mint Lemonade">
+                <div class="card-content">
+                    <h3>Mint Lemonade</h3>
+                    <p>Refreshing lemonade blended with fresh mint leaves.</p>
+                    <div class="card-footer">
+                        <span class="price">$7.00</span>
+                        <button class="btn-add" onclick="addToCart('Mint Lemonade', 7.00)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+             <!-- Item 12 -->
+             <div class="menu-card" data-category="breakfast drinks">
+                <img src="assets/lemonade.jpg" alt="Milk Coffee">
+                <div class="card-content">
+                    <h3>Milk Coffee</h3>
+                    <p>Rich espresso blended with steamed milk.</p>
+                    <div class="card-footer">
+                        <span class="price">$4.50</span>
+                        <button class="btn-add" onclick="addToCart('Milk Coffee', 4.50)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+             <!-- Item 13 -->
+             <div class="menu-card" data-category="breakfast drinks">
+                <img src="assets/black_coffee.jpg" alt="Black Coffee">
+                <div class="card-content">
+                    <h3>Black Coffee</h3>
+                    <p>Strong, freshly brewed dark roast coffee.</p>
+                    <div class="card-footer">
+                        <span class="price">$3.50</span>
+                        <button class="btn-add" onclick="addToCart('Black Coffee', 3.50)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+             <!-- Item 14 -->
+             <div class="menu-card" data-category="breakfast drinks">
+                <img src="assets/milk_tea.jpg" alt="Milk Tea">
+                <div class="card-content">
+                    <h3>Milk Tea</h3>
+                    <p>Classic steeped black tea with a splash of milk.</p>
+                    <div class="card-footer">
+                        <span class="price">$4.00</span>
+                        <button class="btn-add" onclick="addToCart('Milk Tea', 4.00)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+             <!-- Item 15 -->
+             <div class="menu-card" data-category="breakfast drinks">
+                <img src="assets/black_tea.jpg" alt="Black Tea">
+                <div class="card-content">
+                    <h3>Black Tea</h3>
+                    <p>Aromatic and soothing pure black tea.</p>
+                    <div class="card-footer">
+                        <span class="price">$3.00</span>
+                        <button class="btn-add" onclick="addToCart('Black Tea', 3.00)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+             <!-- Item 16 -->
+             <div class="menu-card" data-category="fastfood lunch dinner">
+                <img src="assets/fries.jpg" alt="French Fries">
+                <div class="card-content">
+                    <h3>French Fries</h3>
+                    <p>Crispy golden crinkle-cut french fries with a side of ketchup.</p>
+                    <div class="card-footer">
+                        <span class="price">$4.50</span>
+                        <button class="btn-add" onclick="addToCart('French Fries', 4.50)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+             <!-- Item 17 -->
+             <div class="menu-card" data-category="fastfood lunch dinner">
+                <img src="assets/chicken_nuggets.jpg" alt="Chicken Nuggets">
+                <div class="card-content">
+                    <h3>Chicken Nuggets</h3>
+                    <p>6 pieces of crispy chicken nuggets served with BBQ sauce.</p>
+                    <div class="card-footer">
+                        <span class="price">$6.90</span>
+                        <button class="btn-add" onclick="addToCart('Chicken Nuggets', 6.90)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+             <!-- Item 18 -->
+             <div class="menu-card" data-category="fastfood lunch dinner">
+                <img src="assets/onion_rings.jpg" alt="Onion Rings">
+                <div class="card-content">
+                    <h3>Onion Rings</h3>
+                    <p>Crispy battered thick-cut onion rings.</p>
+                    <div class="card-footer">
+                        <span class="price">$5.50</span>
+                        <button class="btn-add" onclick="addToCart('Onion Rings', 5.50)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="book-view" class="view-section">
+        <div class="booking-container">
+            <h2>Book a Table</h2>
+            <p>Reserve your spot at Sydneyfoodcart.com</p>
+            <form id="booking-form" onsubmit="submitBooking(event)">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" required>
+                </div>
+                <div class="form-group">
+                    <label>Time</label>
+                    <input type="time" required>
+                </div>
+                <div class="form-group">
+                    <label>Guests</label>
+                    <input type="number" min="1" max="20" required placeholder="2">
+                </div>
+                <button type="submit" class="btn-primary">Confirm Booking</button>
+            </form>
+            <div id="booking-success" style="display: none; margin-top: 20px; color: #1a4d2e; font-weight: bold;">
+                <i class="fas fa-check-circle"></i> Booking Confirmed! We look forward to seeing you.
+            </div>
+        </div>
+    </main>
+
+    <main id="checkout-view" class="view-section">
+        <div class="checkout-container">
+            <div class="checkout-summary">
+                <h2>Order Summary</h2>
+                <div id="checkout-items" class="checkout-items-list">
+                    <!-- Injected by JS -->
+                </div>
+                <div class="checkout-totals">
+                    <div class="totals-row"><span>Delivery</span><span>$5.00</span></div>
+                    <div class="totals-row"><span>Tax</span><span>$6.00</span></div>
+                    <div class="totals-row subtotal"><span>Subtotal</span><span id="checkout-subtotal">$0.00</span></div>
+                    <div class="totals-row grand-total"><span>TOTAL:</span><span id="checkout-grand-total">$0.00</span></div>
+                </div>
+            </div>
+
+            <div class="checkout-payment">
+                <h2>Payment Method</h2>
+                
+                <div class="payment-options">
+                    <label class="payment-card active">
+                        <input type="radio" name="payment" value="card" checked>
+                        <i class="fas fa-credit-card"></i> Credit/Debit Card
+                    </label>
+                    <label class="payment-card">
+                        <input type="radio" name="payment" value="qr">
+                        <i class="fas fa-qrcode"></i> QR Code
+                    </label>
+                    <label class="payment-card">
+                        <input type="radio" name="payment" value="wallet">
+                        <i class="fas fa-wallet"></i> Digital Wallets
+                    </label>
+                </div>
+
+                <div class="payment-details" id="payment-details-card">
+                    <div class="form-group">
+                        <label>Card Number</label>
+                        <input type="text" placeholder="1234 5678 9101 1121">
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <div class="form-group" style="flex: 1;">
+                            <label>Expiry</label>
+                            <input type="text" placeholder="MM/YY">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label>CVV</label>
+                            <input type="text" placeholder="123">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="placeFinalOrder()" style="margin-top: 20px;">
+                    Place Final Order & Pay <span id="btn-final-total"></span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-header">
+            <h3>YOUR CART</h3>
+            <button onclick="toggleCart()" class="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Items injected by JS -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>TOTAL:</span>
+                <span id="cart-total-price">$0.00</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">CONFIRM ORDER</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
